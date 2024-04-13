@@ -1,6 +1,7 @@
+import { PostTitle } from "@/components/post-title";
+
 import CoverImage from "./cover-image";
 import DateFormatter from "./date-formatter";
-import { PostTitle } from "@/components/post-title";
 
 type Props = {
   title: string;
@@ -10,16 +11,14 @@ type Props = {
 
 export function PostHeader({ title, coverImage, date }: Props) {
   return (
-    <>
+    <div className="max-w-2xl mx-auto">
       <PostTitle>{title}</PostTitle>
-      <div className="mb-8 md:mb-16 sm:mx-0">
+      <div className="my-8 md:my-16 sm:mx-0">
         <CoverImage title={title} src={coverImage} />
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-6 text-lg">
-          <DateFormatter dateString={date} />
-        </div>
+      <div className="mb-6 text-lg">
+        <DateFormatter dateString={date} />
       </div>
-    </>
+    </div>
   );
 }

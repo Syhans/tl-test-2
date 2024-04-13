@@ -1,17 +1,19 @@
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
+import "@/styles/globals.css";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
-
-import "@/styles/globals.css";
+import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
+  title: PAGE_TITLE,
+  description:
+    "Statically generated blog with Next.js. Test implementation a timeline project.",
 };
 
 export default function RootLayout({
@@ -34,7 +36,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen">{children}</div>
-          <ThemeToggle className="fixed top-4 right-4" />
+          <footer className="container mx-auto px-5 py-8 text-center text-gray-500 dark:text-gray-400">
+            <ThemeToggle />
+          </footer>
         </ThemeProvider>
       </body>
     </html>
