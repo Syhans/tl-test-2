@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import { CMS_NAME } from "@/lib/constants";
-import markdownToHtml from "@/lib/markdownToHtml";
 import Header from "@/components/header";
 import { PostBody } from "@/components/post-body";
 import { PostHeader } from "@/components/post-header";
@@ -14,8 +13,6 @@ export default async function Post({ params }: Params) {
     return notFound();
   }
 
-  const content = await markdownToHtml(post.content || "");
-
   return (
     <main>
       <div className="container mx-auto px-5">
@@ -26,7 +23,7 @@ export default async function Post({ params }: Params) {
             coverImage={post.coverImage}
             date={post.date}
           />
-          <PostBody content={content} />
+          <PostBody content={post.content} />
         </article>
       </div>
     </main>

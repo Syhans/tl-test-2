@@ -4,7 +4,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "convert-images": "ts-node ./convert-images.ts"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -19,10 +20,7 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "remark": "^15.0.1",
-    "remark-embed-images": "^4.0.0",
-    "remark-html": "^16.0.1",
-    "remark-images": "^4.0.0",
+    "react-markdown": "^9.0.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -34,7 +32,9 @@
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.1",
     "postcss": "^8",
+    "sharp": "^0.33.3",
     "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
