@@ -24,12 +24,19 @@ export function PostBody({ content }: Props) {
         remarkPlugins={[remarkGfm]}
         className="space-y-4"
         components={{
+          // img: (props) => (
+          //   <Image
+          //     src={props.src as string}
+          //     alt={props.alt as string}
+          //     width={1200}
+          //     height={200}
+          //   />
+          // ),
           img: (props) => (
-            <Image
+            <img
               src={props.src as string}
               alt={props.alt as string}
-              width={1200}
-              height={200}
+              className="w-full"
             />
           ),
           h1: (props) => <H1 {...props} />,

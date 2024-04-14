@@ -2,7 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
 
-function convertToWebp(sourceDir: string, destDir: string, quality: number) {
+function convertToWebp(
+  sourceDir: string,
+  destDir: string,
+  quality: number,
+  maxDimension: number
+) {
   const items = fs.readdirSync(sourceDir);
 
   items.forEach((item: any) => {
@@ -11,10 +16,11 @@ function convertToWebp(sourceDir: string, destDir: string, quality: number) {
 
     if (fs.statSync(sourcePath).isDirectory()) {
       fs.mkdirSync(destPath, { recursive: true });
-      convertToWebp(sourcePath, destPath, quality);
+      convertToWebp(sourcePath, destPath, quality, maxDimension);
     } else if (path.extname(item).match(/.(jpg|jpeg|png|gif)$/i)) {
       console.log(`Converting ${sourcePath} to webp...`);
       sharp(sourcePath)
+        .resize({ height: maxDimension, fit: "inside" }) // resize the image
         .webp({ quality })
         .toFile(destPath.replace(path.extname(destPath), ".webp"))
         .then(() => console.log(`Converted ${sourcePath} to webp.`));
@@ -27,4 +33,4 @@ function convertToWebp(sourceDir: string, destDir: string, quality: number) {
 }
 
 // Call the function
-convertToWebp("./images-to-convert", "./public/assets/images", 75);
+convertToWebp("./images-to-convert", "./public/assets/images", 75, 720);
