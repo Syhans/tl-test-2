@@ -1,12 +1,9 @@
 export type Post = {
-  slug: string;
   title: string;
+  excerpt: string;
   date: string;
   coverImage: string;
-  excerpt: string;
-  ogImage: {
-    url: string;
-  };
+  episodes: string[];
+  slug: string;
   content: string;
-  preview?: boolean;
 };

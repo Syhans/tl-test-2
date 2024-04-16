@@ -18,8 +18,8 @@ const CoverImage = ({ title, src, slug }: Props) => {
     //     "shadow-sm w-full",
     //     slug && "hover:shadow-lg transition-shadow duration-200"
     //   )}
-    //   width={1920}
-    //   height={1090}
+    //   width={1280}
+    //   height={720}
     // />
     <img
       src={src}

@@ -6,7 +6,7 @@ function convertToWebp(
   sourceDir: string,
   destDir: string,
   quality: number,
-  maxDimension: number
+  maxHeight: number
 ) {
   const items = fs.readdirSync(sourceDir);
 
@@ -16,11 +16,11 @@ function convertToWebp(
 
     if (fs.statSync(sourcePath).isDirectory()) {
       fs.mkdirSync(destPath, { recursive: true });
-      convertToWebp(sourcePath, destPath, quality, maxDimension);
+      convertToWebp(sourcePath, destPath, quality, maxHeight);
     } else if (path.extname(item).match(/.(jpg|jpeg|png|gif)$/i)) {
       console.log(`Converting ${sourcePath} to webp...`);
       sharp(sourcePath)
-        .resize({ height: maxDimension, fit: "inside" }) // resize the image
+        .resize({ height: maxHeight, fit: "inside" }) // resize the image
         .webp({ quality })
         .toFile(destPath.replace(path.extname(destPath), ".webp"))
         .then(() => console.log(`Converted ${sourcePath} to webp.`));

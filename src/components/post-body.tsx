@@ -28,8 +28,8 @@ export function PostBody({ content }: Props) {
           //   <Image
           //     src={props.src as string}
           //     alt={props.alt as string}
-          //     width={1200}
-          //     height={200}
+          //     width={1280}
+          //     height={720}
           //   />
           // ),
           img: (props) => (
