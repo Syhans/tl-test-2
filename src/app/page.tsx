@@ -1,7 +1,7 @@
 import { PostPreview } from "@/components/post-preview";
 import { getAllPosts } from "@/lib/api";
 
-export default function Index() {
+export default async function Index() {
   const posts = getAllPosts();
 
   return (

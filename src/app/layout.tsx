@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description:
-    "Statically generated blog with Next.js. Test implementation a timeline project.",
+    "Statically generated blog with Next.js. Test implementation of a timeline project.",
 };
 
 export default function RootLayout({
@@ -35,10 +35,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen">{children}</div>
-          <footer className="container mx-auto px-5 py-8 text-center text-gray-500 dark:text-gray-400">
-            <ThemeToggle />
-          </footer>
+          <main className="min-h-screen">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

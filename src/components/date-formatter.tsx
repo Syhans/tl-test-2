@@ -9,4 +9,4 @@ const DateFormatter = ({ dateString }: Props) => {
   return <time dateTime={dateString}>{format(date, "LLLL	d, yyyy")}</time>;
 };
 
-export default DateFormatter;
+export { DateFormatter };
