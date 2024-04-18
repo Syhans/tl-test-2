@@ -1,22 +1,38 @@
-import fs from "fs";
+import { readdirSync, readFileSync } from "fs";
+import { readFile } from "fs/promises";
 import matter from "gray-matter";
+import { get } from "http";
 import { join } from "path";
+import { getPlaiceholder } from "plaiceholder";
 
-import { Post } from "@/interfaces/post";
+import { Event, Post } from "@/interfaces";
 
 const postsDirectory = join(process.cwd(), "_posts");
+const imagesDirectory = join(process.cwd(), "public");
+
+export async function getImageProps(src: string) {
+  const filePath = join(imagesDirectory, src);
+  const file = await readFile(filePath);
+
+  const { base64, metadata } = await getPlaiceholder(file);
+
+  return {
+    width: metadata.width,
+    height: metadata.height,
+    blurDataURL: base64,
+  };
+}
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+  return readdirSync(postsDirectory).map((path) => path.replace(/\.md$/, ""));
 }
 
 export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const fullPath = join(postsDirectory, `${slug}.md`);
+  const fileContents = readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const post = { ...data, slug: realSlug, content } as Post;
+  const post = { ...data, slug, content } as Post;
 
   return post;
 }
@@ -28,4 +44,43 @@ export function getAllPosts(): Post[] {
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
+}
+
+export function getAllEvents(): Event[] {
+  const slugs = getPostSlugs();
+  const posts = slugs.map((slug) => getPostBySlug(slug));
+  const backgroundEvents = posts.map((post) => {
+    return {
+      id: post.slug,
+      start: post.date,
+      display: "background",
+    };
+  });
+  const episodesToDateMap = {} as { [key: string]: string[] };
+  posts.forEach((post) => {
+    post.episodes.forEach((episode, index) => {
+      if (!episodesToDateMap[episode]) {
+        episodesToDateMap[episode] = [];
+      }
+      episodesToDateMap[episode].push(post.date);
+    });
+  });
+  const episodeEvents = Object.entries(episodesToDateMap).map(
+    ([episode, dates]) => {
+      const startDate = new Date(dates[0]);
+      const start = startDate.toISOString();
+      const endDate = new Date(dates[dates.length - 1]);
+      endDate.setDate(endDate.getDate() + 1);
+      const end = endDate.toISOString();
+
+      return {
+        id: `episode-${episode}`,
+        title: `Episode ${episode}`,
+        start: start,
+        end,
+      };
+    }
+  );
+
+  return [...backgroundEvents, ...episodeEvents];
 }

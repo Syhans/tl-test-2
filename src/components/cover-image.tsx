@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
+import { NextImageWrapper as Image } from "@/components/image";
 
 type Props = {
   title: string;
@@ -10,26 +9,7 @@ type Props = {
 };
 
 const CoverImage = ({ title, src, slug }: Props) => {
-  const image = (
-    // <Image
-    //   src={src}
-    //   alt={`Cover Image for ${title}`}
-    //   className={cn(
-    //     "shadow-sm w-full",
-    //     slug && "hover:shadow-lg transition-shadow duration-200"
-    //   )}
-    //   width={1280}
-    //   height={720}
-    // />
-    <img
-      src={src}
-      alt={`Cover Image for ${title}`}
-      className={cn(
-        "shadow-sm w-full",
-        slug && "hover:shadow-lg transition-shadow duration-200"
-      )}
-    />
-  );
+  const image = <Image src={src} alt={`Cover Image for ${title}`} />;
   return (
     <div className="sm:mx-0">
       {slug ? (

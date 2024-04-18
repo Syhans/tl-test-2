@@ -1,7 +1,7 @@
-import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import { NextImageWrapper as Image } from "@/components/image";
 import {
   H1,
   H2,
@@ -24,20 +24,8 @@ export function PostBody({ content }: Props) {
         remarkPlugins={[remarkGfm]}
         className="space-y-4"
         components={{
-          // img: (props) => (
-          //   <Image
-          //     src={props.src as string}
-          //     alt={props.alt as string}
-          //     width={1280}
-          //     height={720}
-          //   />
-          // ),
           img: (props) => (
-            <img
-              src={props.src as string}
-              alt={props.alt as string}
-              className="w-full"
-            />
+            <Image src={props.src as string} alt={props.alt as string} />
           ),
           h1: (props) => <H1 {...props} />,
           h2: (props) => <H2 {...props} />,

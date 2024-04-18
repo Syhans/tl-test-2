@@ -7,3 +7,11 @@ export type Post = {
   slug: string;
   content: string;
 };
+
+export type Event = {
+  id: string;
+  title?: string;
+  start: string;
+  end?: string;
+  display?: string;
+};

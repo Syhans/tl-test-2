@@ -20,18 +20,16 @@ export default async function Post({ params }: Params) {
   }
 
   return (
-    <>
-      <div className="container mx-auto px-5">
-        <article className="my-4">
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-          />
-          <PostBody content={post.content} />
-        </article>
-      </div>
-    </>
+    <div className="container mx-auto px-5">
+      <article className="my-4">
+        <PostHeader
+          title={post.title}
+          coverImage={post.coverImage}
+          date={post.date}
+        />
+        <PostBody content={post.content} />
+      </article>
+    </div>
   );
 }
 

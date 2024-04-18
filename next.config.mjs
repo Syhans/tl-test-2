@@ -1,4 +1,5 @@
 // @ts-check
+import withPlaiceholder from "@plaiceholder/next";
 
 /**
  * @type {import('next').NextConfig}
@@ -13,4 +14,6 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const config = withPlaiceholder(nextConfig);
+
+export default config;
