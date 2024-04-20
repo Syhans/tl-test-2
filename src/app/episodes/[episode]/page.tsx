@@ -2,9 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { EpisodeHeader } from "@/components/header";
-import { EpisodePagination } from "@/components/pagination";
 import { getAllEpisodes, getEpisodesToDateMap } from "@/lib/api";
-import { PAGE_TITLE } from "@/lib/constants";
 
 import episodeCoverImages from "./episodeCoverImages.json";
 
@@ -27,14 +25,12 @@ export default async function Post({ params }: Params) {
     <div className="container mx-auto px-5">
       <article className="my-4">
         <EpisodeHeader
+          episode={params.episode}
           title={`Episode ${params.episode}`}
           coverImage={coverImage}
           dates={dates}
         />
       </article>
-      <div className="max-w-2xl mx-auto">
-        <EpisodePagination episode={params.episode} />
-      </div>
     </div>
   );
 }
@@ -44,7 +40,7 @@ export function generateMetadata({ params }: Params): Metadata {
     return notFound();
   }
 
-  const title = `Episode ${params.episode} | ${PAGE_TITLE}`;
+  const title = `Episode ${params.episode}`;
 
   return { title };
 }

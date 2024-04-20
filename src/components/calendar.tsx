@@ -2,19 +2,20 @@
 
 import dayGridPlugin from "@fullcalendar/daygrid";
 import FullCalendar from "@fullcalendar/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Event } from "@/interfaces";
 
 function Calendar({ events }: { events: Event[] }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   return (
     <FullCalendar
       timeZone="Japan"
       plugins={[dayGridPlugin]}
       initialView="dayGridMonth"
-      initialDate={"2014-10-01"}
+      initialDate={searchParams.get("initialDate") ?? "2014-10-01"}
       events={events}
       validRange={{
         start: "2014-10-01",
@@ -30,11 +31,9 @@ function Calendar({ events }: { events: Event[] }) {
       eventClick={(info) => {
         const eventId = info.event.id;
         if (eventId.startsWith("episode-")) {
-          // console.log("Episode event clicked:", eventId);
           router.push(`/episodes/${eventId.replace("episode-", "")}`);
         } else {
-          // console.log("Post event clicked:", eventId);
-          router.push(`/calendar/${info.event.id}`);
+          router.push(`/calendar/${eventId}`);
         }
       }}
       eventClassNames="cursor-pointer"

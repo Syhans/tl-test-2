@@ -83,7 +83,7 @@ export function getAllEvents(): Event[] {
       return {
         id: `episode-${episode}`,
         title: `Episode ${episode}`,
-        start: start,
+        start,
         end,
       };
     }

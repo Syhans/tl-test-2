@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { BackToTopButton } from "@/components/back-to-top";
 import { PostHeader } from "@/components/header";
-import { PostPagination } from "@/components/pagination";
 import { PostBody } from "@/components/post-body";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
-import { PAGE_TITLE } from "@/lib/constants";
 
 type Params = {
   params: {
@@ -24,6 +23,7 @@ export default async function Post({ params }: Params) {
     <div className="container mx-auto px-5">
       <article className="my-4">
         <PostHeader
+          slug={params.slug}
           title={post.title}
           coverImage={post.coverImage}
           episodes={post.episodes}
@@ -31,7 +31,7 @@ export default async function Post({ params }: Params) {
         <PostBody content={post.content} />
       </article>
       <div className="max-w-2xl mx-auto">
-        <PostPagination post={params.slug} />
+        <BackToTopButton className="px-1" />
       </div>
     </div>
   );
@@ -44,7 +44,7 @@ export function generateMetadata({ params }: Params): Metadata {
     return notFound();
   }
 
-  const title = `${post.title} | ${PAGE_TITLE}`;
+  const title = `${post.title}`;
 
   return {
     title,
