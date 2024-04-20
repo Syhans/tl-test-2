@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { PostHeader } from "@/components/header";
+import { PostPagination } from "@/components/pagination";
 import { PostBody } from "@/components/post-body";
-import { PostHeader } from "@/components/post-header";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import { PAGE_TITLE } from "@/lib/constants";
 
@@ -25,10 +26,13 @@ export default async function Post({ params }: Params) {
         <PostHeader
           title={post.title}
           coverImage={post.coverImage}
-          date={post.date}
+          episodes={post.episodes}
         />
         <PostBody content={post.content} />
       </article>
+      <div className="max-w-2xl mx-auto">
+        <PostPagination post={params.slug} />
+      </div>
     </div>
   );
 }

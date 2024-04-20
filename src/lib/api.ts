@@ -1,7 +1,6 @@
 import { readdirSync, readFileSync } from "fs";
 import { readFile } from "fs/promises";
 import matter from "gray-matter";
-import { get } from "http";
 import { join } from "path";
 import { getPlaiceholder } from "plaiceholder";
 
@@ -46,6 +45,21 @@ export function getAllPosts(): Post[] {
   return posts;
 }
 
+export function getEpisodesToDateMap(): { [key: string]: string[] } {
+  const slugs = getPostSlugs();
+  const posts = slugs.map((slug) => getPostBySlug(slug));
+  const episodesToDateMap = {} as { [key: string]: string[] };
+  posts.forEach((post) => {
+    post.episodes.forEach((episode, index) => {
+      if (!episodesToDateMap[episode]) {
+        episodesToDateMap[episode] = [];
+      }
+      episodesToDateMap[episode].push(post.date);
+    });
+  });
+  return episodesToDateMap;
+}
+
 export function getAllEvents(): Event[] {
   const slugs = getPostSlugs();
   const posts = slugs.map((slug) => getPostBySlug(slug));
@@ -56,15 +70,8 @@ export function getAllEvents(): Event[] {
       display: "background",
     };
   });
-  const episodesToDateMap = {} as { [key: string]: string[] };
-  posts.forEach((post) => {
-    post.episodes.forEach((episode, index) => {
-      if (!episodesToDateMap[episode]) {
-        episodesToDateMap[episode] = [];
-      }
-      episodesToDateMap[episode].push(post.date);
-    });
-  });
+  // runs getPostSlugs twice, but performance is not a concern here
+  const episodesToDateMap = getEpisodesToDateMap();
   const episodeEvents = Object.entries(episodesToDateMap).map(
     ([episode, dates]) => {
       const startDate = new Date(dates[0]);
@@ -83,4 +90,19 @@ export function getAllEvents(): Event[] {
   );
 
   return [...backgroundEvents, ...episodeEvents];
+}
+
+export function getAllEpisodes(): string[] {
+  const slugs = getPostSlugs();
+  const posts = slugs.map((slug) => getPostBySlug(slug));
+  const episodes = posts.reduce((acc, post) => {
+    post.episodes.forEach((episode) => {
+      if (!acc.includes(episode)) {
+        acc.push(episode);
+      }
+    });
+    return acc;
+  }, [] as string[]);
+
+  return episodes;
 }

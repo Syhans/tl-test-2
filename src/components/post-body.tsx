@@ -27,14 +27,14 @@ export function PostBody({ content }: Props) {
           img: (props) => (
             <Image src={props.src as string} alt={props.alt as string} />
           ),
-          h1: (props) => <H1 {...props} />,
-          h2: (props) => <H2 {...props} />,
-          h3: (props) => <H3 {...props} />,
-          h4: (props) => <H4 {...props} />,
-          code: (props) => <InlineCode {...props} />,
-          ul: (props) => <List {...props} />,
-          p: (props) => <P {...props} />,
-          blockquote: (props) => <Quote {...props} />,
+          h1: ({ node, ...props }) => <H1 {...props} />,
+          h2: ({ node, ...props }) => <H2 {...props} />,
+          h3: ({ node, ...props }) => <H3 {...props} />,
+          h4: ({ node, ...props }) => <H4 {...props} />,
+          code: ({ node, ...props }) => <InlineCode {...props} />,
+          ul: ({ node, ...props }) => <List {...props} />,
+          p: ({ node, ...props }) => <P {...props} />,
+          blockquote: ({ node, ...props }) => <Quote {...props} />,
         }}
       >
         {content}

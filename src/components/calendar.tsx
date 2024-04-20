@@ -30,7 +30,8 @@ function Calendar({ events }: { events: Event[] }) {
       eventClick={(info) => {
         const eventId = info.event.id;
         if (eventId.startsWith("episode-")) {
-          console.log("Episode event clicked:", eventId);
+          // console.log("Episode event clicked:", eventId);
+          router.push(`/episodes/${eventId.replace("episode-", "")}`);
         } else {
           // console.log("Post event clicked:", eventId);
           router.push(`/calendar/${info.event.id}`);
