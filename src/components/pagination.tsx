@@ -23,7 +23,7 @@ export function PostPagination({
         href={`/calendar/${prev}`}
         disabled={!prev}
       />
-      <ToCalendarButton initialDate={slug} />
+      <ToCalendarButton date={slug} />
       <NextButton
         label={next ?? "Last Date"}
         href={`/calendar/${next}`}
@@ -50,7 +50,7 @@ export function EpisodePagination({
         href={`/episodes/${prev}`}
         disabled={!prev}
       />
-      <ToCalendarButton initialDate={episodeToDateMap[episode][0]} />
+      <ToCalendarButton date={episodeToDateMap[episode][0]} />
       <NextButton
         label={next ? `Episode ${next}` : "Last Episode"}
         href={`/episodes/${next}`}
@@ -60,10 +60,8 @@ export function EpisodePagination({
   );
 }
 
-function ToCalendarButton({ initialDate }: { initialDate?: string }) {
-  const href = initialDate
-    ? `/calendar?initialDate=${initialDate}`
-    : "/calendar";
+function ToCalendarButton({ date }: { date?: string }) {
+  const href = date ? `/calendar?date=${date}` : "/calendar";
   return (
     <Link href={href} className={buttonVariants({ variant: "outline" })}>
       <Calendar className="h-[1.2rem] w-[1.2rem] sm:mr-2" />
@@ -87,7 +85,7 @@ function PreviousButton({
       href={href}
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "w-36",
+        "sm:w-36",
         disabled && "pointer-events-none opacity-50"
       )}
     >
@@ -111,7 +109,7 @@ function NextButton({
       href={href}
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "w-36",
+        "sm:w-36",
         disabled && "pointer-events-none opacity-50"
       )}
     >

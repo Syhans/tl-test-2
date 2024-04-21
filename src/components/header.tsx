@@ -25,7 +25,7 @@ export function PostHeader({ slug, title, coverImage, episodes }: PostProps) {
     <div className="max-w-3xl mx-auto space-y-4 md:space-y-8 sm-mx-0">
       <H1>{parsedTitle}</H1>
       <div className="flex justify-center w-full">
-        <Image src={coverImage} alt={`Cover Image for ${parsedTitle}`} />;
+        <Image src={coverImage} alt={`Cover Image for ${parsedTitle}`} />
       </div>
       <PostPagination slug={slug} />
       <div className="mb-6 text-lg">
