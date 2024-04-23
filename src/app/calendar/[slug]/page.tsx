@@ -30,7 +30,7 @@ export default async function Post({ params }: Params) {
         />
         <PostBody content={post.content} />
       </article>
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-xl mx-auto">
         <BackToTopButton className="px-1" />
       </div>
     </div>

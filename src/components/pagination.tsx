@@ -85,7 +85,7 @@ function PreviousButton({
       href={href}
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "sm:w-36",
+        "sm:w-40",
         disabled && "pointer-events-none opacity-50"
       )}
     >
@@ -109,7 +109,7 @@ function NextButton({
       href={href}
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "sm:w-36",
+        "sm:w-40",
         disabled && "pointer-events-none opacity-50"
       )}
     >
