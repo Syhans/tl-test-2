@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { BackToTopButton } from "@/components/back-to-top";
 import { PostHeader } from "@/components/header";
 import { PostBody } from "@/components/post-body";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
@@ -30,9 +29,6 @@ export default async function Post({ params }: Params) {
         />
         <PostBody content={post.content} />
       </article>
-      <div className="max-w-xl mx-auto">
-        <BackToTopButton className="px-1" />
-      </div>
     </div>
   );
 }

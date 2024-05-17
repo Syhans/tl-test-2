@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -28,8 +29,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-gray-50 dark:bg-gray-950 font-sans antialiased",
-          inter.variable
+          "bg-gray-50 font-sans antialiased dark:bg-gray-950",
+          inter.variable,
         )}
       >
         <ThemeProvider
@@ -38,7 +39,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen">{children}</main>
+          <Navbar />
+          <main className="min-h-[calc(100svh-64px)]">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -22,9 +22,9 @@ type EpisodeProps = {
 export function PostHeader({ slug, title, coverImage, episodes }: PostProps) {
   const parsedTitle = convertDate(title);
   return (
-    <div className="max-w-2xl mx-auto space-y-4 md:space-y-8 sm-mx-0">
+    <div className="sm-mx-0 mx-auto max-w-2xl space-y-4 md:space-y-8">
       <H1>{parsedTitle}</H1>
-      <div className="flex justify-center w-full">
+      <div className="flex w-full justify-center">
         <Image src={coverImage} alt={`Cover Image for ${parsedTitle}`} />
       </div>
       <PostPagination slug={slug} />
@@ -56,7 +56,7 @@ export function EpisodeHeader({
   dates,
 }: EpisodeProps) {
   return (
-    <div className="max-w-2xl mx-auto space-y-4 md:space-y-8 sm-mx-0">
+    <div className="sm-mx-0 mx-auto max-w-2xl space-y-4 md:space-y-8">
       <H1>{title}</H1>
       <Image src={coverImage} alt={`Cover Image for ${title}`} />
       <EpisodePagination episode={episode} />

@@ -6,7 +6,7 @@ function convertToWebp(
   sourceDir: string,
   destDir: string,
   quality: number,
-  maxHeight: number
+  maxHeight: number,
 ) {
   const items = fs.readdirSync(sourceDir);
 

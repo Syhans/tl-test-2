@@ -17,7 +17,7 @@ export function PostPagination({
     .sort();
   const { prev, next } = getPrevAndNext(posts, slug);
   return (
-    <div className={cn("flex justify-between w-full", className)}>
+    <div className={cn("flex w-full justify-between", className)}>
       <PreviousButton
         label={prev ?? "First Date"}
         href={`/calendar/${prev}`}
@@ -44,7 +44,7 @@ export function EpisodePagination({
   const episodes = Object.keys(episodeToDateMap).sort();
   const { prev, next } = getPrevAndNext(episodes, episode);
   return (
-    <div className={cn("flex justify-between w-full", className)}>
+    <div className={cn("flex w-full justify-between", className)}>
       <PreviousButton
         label={prev ? `Episode ${prev}` : "First Episode"}
         href={`/episodes/${prev}`}
@@ -86,7 +86,7 @@ function PreviousButton({
       className={cn(
         buttonVariants({ variant: "outline" }),
         "sm:w-40",
-        disabled && "pointer-events-none opacity-50"
+        disabled && "pointer-events-none opacity-50",
       )}
     >
       <ArrowLeft className="h-[1.2rem] w-[1.2rem] sm:mr-2" />
@@ -110,7 +110,7 @@ function NextButton({
       className={cn(
         buttonVariants({ variant: "outline" }),
         "sm:w-40",
-        disabled && "pointer-events-none opacity-50"
+        disabled && "pointer-events-none opacity-50",
       )}
     >
       <span className="sr-only sm:not-sr-only">{label}</span>

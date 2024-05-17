@@ -50,7 +50,7 @@ export function getEpisodesToDateMap(): { [key: string]: string[] } {
   const posts = slugs.map((slug) => getPostBySlug(slug));
   const episodesToDateMap = {} as { [key: string]: string[] };
   posts.forEach((post) => {
-    post.episodes.forEach((episode, index) => {
+    post.episodes.forEach((episode) => {
       if (!episodesToDateMap[episode]) {
         episodesToDateMap[episode] = [];
       }
@@ -86,7 +86,7 @@ export function getAllEvents(): Event[] {
         start,
         end,
       };
-    }
+    },
   );
 
   return [...backgroundEvents, ...episodeEvents];

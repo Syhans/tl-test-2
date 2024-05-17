@@ -19,7 +19,7 @@ type Props = {
 
 export function PostBody({ content }: Props) {
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="mx-auto max-w-xl">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         className="space-y-4"
@@ -27,14 +27,14 @@ export function PostBody({ content }: Props) {
           img: (props) => (
             <Image src={props.src as string} alt={props.alt as string} />
           ),
-          h1: ({ node, ...props }) => <H1 {...props} />,
-          h2: ({ node, ...props }) => <H2 {...props} />,
-          h3: ({ node, ...props }) => <H3 {...props} />,
-          h4: ({ node, ...props }) => <H4 {...props} />,
-          code: ({ node, ...props }) => <InlineCode {...props} />,
-          ul: ({ node, ...props }) => <List {...props} />,
-          p: ({ node, ...props }) => <P {...props} />,
-          blockquote: ({ node, ...props }) => <Quote {...props} />,
+          h1: ({ node: _, ...props }) => <H1 {...props} />,
+          h2: ({ node: _, ...props }) => <H2 {...props} />,
+          h3: ({ node: _, ...props }) => <H3 {...props} />,
+          h4: ({ node: _, ...props }) => <H4 {...props} />,
+          code: ({ node: _, ...props }) => <InlineCode {...props} />,
+          ul: ({ node: _, ...props }) => <List {...props} />,
+          p: ({ node: _, ...props }) => <P {...props} />,
+          blockquote: ({ node: _, ...props }) => <Quote {...props} />,
         }}
       >
         {content}

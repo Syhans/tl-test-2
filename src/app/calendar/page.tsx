@@ -7,12 +7,10 @@ export default async function Page() {
   const events = getAllEvents();
 
   return (
-    <div className="container mx-auto px-5">
-      <div className="h-screen p-10">
-        <Suspense fallback={null}>
-          <Calendar events={events} />
-        </Suspense>
-      </div>
+    <div className="mx-auto h-[calc(100svh-64px)] max-w-[90rem]">
+      <Suspense fallback={null}>
+        <Calendar events={events} />
+      </Suspense>
     </div>
   );
 }
