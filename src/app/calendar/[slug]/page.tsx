@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 
 import { PostHeader } from "@/components/header";
 import { PostBody } from "@/components/post-body";
+import { Sidebar } from "@/components/sidebar";
+import { TableOfContents } from "@/components/table-of-contents";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 
 type Params = {
@@ -19,15 +21,19 @@ export default async function Post({ params }: Params) {
   }
 
   return (
-    <div className="container mx-auto px-5">
-      <article className="my-4">
-        <PostHeader
-          slug={params.slug}
-          title={post.title}
-          coverImage={post.coverImage}
-          episodes={post.episodes}
-        />
-        <PostBody content={post.content} />
+    <div className="mx-auto flex max-w-[90rem]">
+      <Sidebar />
+      <TableOfContents editable={true} />
+      <article className="flex min-h-[100svh-64px] w-full min-w-0 justify-center break-words pb-8">
+        <div className="w-full min-w-0 max-w-6xl space-y-6 px-6 pt-4 md:px-12">
+          <PostHeader
+            slug={params.slug}
+            title={post.title}
+            coverImage={post.coverImage}
+            episodes={post.episodes}
+          />
+          <PostBody content={post.content} />
+        </div>
       </article>
     </div>
   );
