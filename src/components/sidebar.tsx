@@ -18,7 +18,12 @@ export function Sidebar({ children }: { children?: React.ReactNode }) {
         !showSidebar && "md:w-20",
       )}
     >
-      <div className="scrollbar grow overflow-y-auto overflow-x-hidden p-4 md:h-[calc(100svh-64px)]">
+      <div
+        className={cn(
+          "scrollbar grow overflow-y-auto overflow-x-hidden p-4 md:h-[calc(100svh-64px)]",
+          !showSidebar && "invisible",
+        )}
+      >
         <div
           className={cn(
             "w-[224px] overflow-hidden transition-all duration-300 ease-in-out",
