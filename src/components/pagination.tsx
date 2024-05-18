@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Calendar } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarFold } from "lucide-react";
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -63,9 +63,11 @@ export function EpisodePagination({
 function ToCalendarButton({ date }: { date?: string }) {
   const href = date ? `/calendar?date=${date}` : "/calendar";
   return (
-    <Link href={href} className={buttonVariants({ variant: "outline" })}>
-      <Calendar className="h-[1.2rem] w-[1.2rem] sm:mr-2" />
-      <span className="sr-only sm:not-sr-only">Back to Calendar</span>
+    <Link href={href} className={cn(buttonVariants({ variant: "outline" }))}>
+      <CalendarFold className="h-[1.2rem] w-[1.2rem]" />
+      <span className="sr-only text-xs lg:not-sr-only lg:ml-2">
+        Back to Calendar
+      </span>
     </Link>
   );
 }
@@ -85,12 +87,12 @@ function PreviousButton({
       href={href}
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "sm:w-40",
+        "w-40",
         disabled && "pointer-events-none opacity-50",
       )}
     >
-      <ArrowLeft className="h-[1.2rem] w-[1.2rem] sm:mr-2" />
-      <span className="sr-only sm:not-sr-only">{label}</span>
+      <ArrowLeft className="h-[1.2rem] w-[1.2rem]" />
+      <span className="ml-2 text-xs">{label}</span>
     </Link>
   );
 }
@@ -109,12 +111,12 @@ function NextButton({
       href={href}
       className={cn(
         buttonVariants({ variant: "outline" }),
-        "sm:w-40",
+        "w-40",
         disabled && "pointer-events-none opacity-50",
       )}
     >
-      <span className="sr-only sm:not-sr-only">{label}</span>
-      <ArrowRight className="h-[1.2rem] w-[1.2rem] sm:ml-2" />
+      <span className="mr-2 text-xs">{label}</span>
+      <ArrowRight className="h-[1.2rem] w-[1.2rem]" />
     </Link>
   );
 }

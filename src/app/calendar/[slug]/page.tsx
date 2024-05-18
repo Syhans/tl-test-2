@@ -20,6 +20,7 @@ export default async function Post({ params }: Params) {
     return notFound();
   }
 
+  // TODO: move sidebar and table of contents to layout
   return (
     <div className="mx-auto flex max-w-[90rem]">
       <Sidebar />
