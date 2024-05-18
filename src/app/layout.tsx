@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SidebarProvider } from "@/contexts/SidebarContext";
 import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -39,9 +40,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="min-h-[calc(100svh-64px)]">{children}</main>
-          <Footer />
+          <SidebarProvider>
+            <Navbar />
+            <main className="min-h-[calc(100svh-64px)]">{children}</main>
+            <Footer />
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>

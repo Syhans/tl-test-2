@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -50,9 +51,14 @@ export function Navbar() {
         >
           <span>About</span>
         </Link>
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu />
+            </Button>
+          </SheetTrigger>
+          <SheetContent></SheetContent>
+        </Sheet>
       </nav>
     </div>
   );
