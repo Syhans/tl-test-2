@@ -63,7 +63,7 @@ function NavigationItem({
             </Button>
           </CollapsibleTrigger>
           <CollapsibleContent className="CollapsibleContent">
-            <div className="my-0.5 flex">
+            <div className="flex py-1">
               {/* Vertical line */}
               <div className="mx-2 w-px bg-gray-200 dark:bg-gray-800" />
               <ul className="flex w-full flex-col gap-1">
@@ -91,7 +91,7 @@ function NavigationItem({
           buttonVariants({
             variant: "ghost",
             className: cn(
-              "my-0.5 w-full justify-start font-normal",
+              "w-full justify-start font-normal",
               isActive &&
                 "bg-gray-100 font-medium text-teal-500 dark:bg-gray-800",
             ),
