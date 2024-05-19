@@ -3,16 +3,20 @@
 import { CalendarRange } from "lucide-react";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavigationItem } from "@/interfaces";
 import { PAGE_TITLE } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
-export function Navbar() {
-  const pathname = usePathname();
+import { Navigation } from "./navigation";
+
+export function Navbar({ navigation }: { navigation: NavigationItem[] }) {
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const onNavigate = () => {
+    setSheetOpen(false);
+  };
   return (
     <div className="sticky top-0 z-20 w-full bg-transparent">
       <div className="pointer-events-none absolute z-[-1] h-full w-full bg-gray-50/85 shadow shadow-black/10 backdrop-blur-md dark:bg-gray-950/85 dark:shadow-white/10" />
@@ -24,40 +28,16 @@ export function Navbar() {
           <CalendarRange className="mr-2 h-6 w-6" />
           <span>{PAGE_TITLE}</span>
         </Link>
-        <Link
-          href="/calendar"
-          className={cn(
-            "hidden p-2 text-sm transition-opacity hover:opacity-75 md:inline-block",
-            pathname.startsWith("/calendar") && "font-bold",
-          )}
-        >
-          <span>Calendar</span>
-        </Link>
-        <Link
-          href="/episodes/1"
-          className={cn(
-            "hidden p-2 text-sm transition-opacity hover:opacity-75 md:inline-block",
-            pathname.startsWith("/episodes") && "font-bold",
-          )}
-        >
-          <span>Episodes</span>
-        </Link>
-        <Link
-          href="/about"
-          className={cn(
-            "hidden p-2 text-sm transition-opacity hover:opacity-75 md:inline-block",
-            pathname.startsWith("/about") && "font-bold",
-          )}
-        >
-          <span>About</span>
-        </Link>
-        <Sheet>
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu />
+              <span className="sr-only">Open Navigation</span>
             </Button>
           </SheetTrigger>
-          <SheetContent></SheetContent>
+          <SheetContent>
+            <Navigation navigation={navigation} onNavigate={onNavigate} />
+          </SheetContent>
         </Sheet>
       </nav>
     </div>

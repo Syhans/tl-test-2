@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const hideThemeToggleOn = ["/episodes(/.*)?", "/calendar/(.*)"];
+const hideThemeToggleOn = ["/episodes(/.*)?", "/calendar/(.*)", "/about"];
 
 export function Footer() {
   const pathname = usePathname();

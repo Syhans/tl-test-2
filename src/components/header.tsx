@@ -25,7 +25,11 @@ export function PostHeader({ slug, title, coverImage, episodes }: PostProps) {
     <>
       <H1>{parsedTitle}</H1>
       <div className="flex w-full justify-center">
-        <Image src={coverImage} alt={`Cover Image for ${parsedTitle}`} />
+        <Image
+          src={coverImage}
+          alt={`Cover Image for ${parsedTitle}`}
+          priority
+        />
       </div>
       <PostPagination slug={slug} />
       <div className="mb-6 text-lg">
@@ -36,7 +40,7 @@ export function PostHeader({ slug, title, coverImage, episodes }: PostProps) {
               return (
                 <li key={episode}>
                   <Link
-                    className="text-gray-600 underline-offset-4 hover:underline dark:text-gray-400"
+                    className="text-gray-600 underline-offset-4 transition-opacity hover:opacity-75 dark:text-gray-400"
                     href={`/episodes/${episode}`}
                   >{`Episode ${episode}`}</Link>
                 </li>
@@ -58,7 +62,7 @@ export function EpisodeHeader({
   return (
     <>
       <H1>{title}</H1>
-      <Image src={coverImage} alt={`Cover Image for ${title}`} />
+      <Image src={coverImage} alt={`Cover Image for ${title}`} priority />
       <EpisodePagination episode={episode} />
       <div className="text-lg">
         This episode covers the following days:{" "}
@@ -67,7 +71,7 @@ export function EpisodeHeader({
             return (
               <li key={date}>
                 <Link
-                  className="text-gray-600 underline-offset-4 hover:underline dark:text-gray-400"
+                  className="text-gray-600 underline-offset-4 transition-opacity hover:opacity-75 dark:text-gray-400"
                   href={`/calendar/${date}`}
                 >{`${convertDate(date)}`}</Link>
               </li>

@@ -1,19 +1,14 @@
 "use client";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
-import { useSidebarToggle } from "@/contexts/SidebarContext";
+import { useSidebar, useSidebarToggle } from "@/contexts/SidebarContext";
 import { cn } from "@/lib/utils";
 
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 
-export function Sidebar({
-  children,
-  isOpen,
-}: {
-  children?: React.ReactNode;
-  isOpen: boolean;
-}) {
+export function Sidebar({ children }: { children?: React.ReactNode }) {
+  const isOpen = useSidebar();
   const toggleSidebar = useSidebarToggle();
 
   return (
@@ -35,10 +30,13 @@ export function Sidebar({
             !isOpen && "w-0",
           )}
         >
-          {/* Content */}
-          {children}
-          <div className="flex h-[1000px] w-full items-center justify-center border border-black dark:border-white max-md:hidden">
-            Sidebar Placeholder
+          <div
+            className={cn(
+              "opacity-100 transition-opacity duration-500 ease-in-out",
+              !isOpen && "w-0 opacity-0",
+            )}
+          >
+            {children}
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarProvider } from "@/contexts/SidebarContext";
+import { getNavigation } from "@/lib/api";
 import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +27,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navigation = getNavigation();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -41,7 +43,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider>
-            <Navbar />
+            <Navbar navigation={navigation} />
             <main className="min-h-[calc(100svh-64px)]">{children}</main>
             <Footer />
           </SidebarProvider>

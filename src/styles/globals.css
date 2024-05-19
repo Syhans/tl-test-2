@@ -3,3 +3,4 @@
 @tailwind utilities;
 
 @import "./scrollbar.css";
+@import "./CollapsibleContent.css";

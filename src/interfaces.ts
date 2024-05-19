@@ -15,3 +15,9 @@ export type Event = {
   end?: string;
   display?: string;
 };
+
+export type NavigationItem = {
+  label: string;
+  href: string;
+  children?: NavigationItem[];
+};

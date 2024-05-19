@@ -2,7 +2,15 @@ import Image from "next/image";
 
 import { getImageProps } from "@/lib/api";
 
-async function NextImageWrapper({ src, alt }: { src: string; alt?: string }) {
+async function NextImageWrapper({
+  src,
+  alt,
+  priority,
+}: {
+  src: string;
+  alt?: string;
+  priority?: boolean;
+}) {
   const { width, height, blurDataURL } = await getImageProps(src);
   return (
     <Image
@@ -12,6 +20,7 @@ async function NextImageWrapper({ src, alt }: { src: string; alt?: string }) {
       height={height}
       placeholder="blur"
       blurDataURL={blurDataURL}
+      priority={priority}
     />
   );
 }

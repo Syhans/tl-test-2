@@ -4,7 +4,9 @@ import matter from "gray-matter";
 import { join } from "path";
 import { getPlaiceholder } from "plaiceholder";
 
-import { Event, Post } from "@/interfaces";
+import { Event, NavigationItem, Post } from "@/interfaces";
+
+import { convertDate, getMonth, getYear, monthNameToNumber } from "./date";
 
 const postsDirectory = join(process.cwd(), "_posts");
 const imagesDirectory = join(process.cwd(), "public");
@@ -105,4 +107,74 @@ export function getAllEpisodes(): string[] {
   }, [] as string[]);
 
   return episodes;
+}
+
+export function getNavigation(): NavigationItem[] {
+  const navigation: NavigationItem[] = [];
+  navigation.push({ label: "About", href: "/about" });
+
+  const posts = getAllPosts()
+    .map((post) => post.title)
+    // sort asc
+    .sort((a, b) => (a > b ? 1 : -1));
+  // get unique years
+  const calendarItem = {
+    label: "Calendar",
+    href: "/calendar",
+    children: [] as NavigationItem[],
+  };
+  const years = posts
+    .map((post) => getYear(post))
+    .filter((year, index, self) => self.indexOf(year) === index);
+  years.forEach((year) => {
+    const yearItem = {
+      label: year,
+      href: `/calendar/${year}`,
+      children: [] as NavigationItem[],
+    };
+    const months = posts
+      .filter((post) => getYear(post) === year)
+      .map((post) => getMonth(post))
+      .filter((month, index, self) => self.indexOf(month) === index);
+
+    months.forEach((month) => {
+      const monthItem = {
+        label: month,
+        // convert month number to name only to convert it back to number, lol
+        // it works to I won't be bothered to change it
+        href: `/calendar/${year}-${monthNameToNumber(month)}`,
+        children: [] as NavigationItem[],
+      };
+      const days = posts.filter(
+        (post) => getYear(post) === year && getMonth(post) === month,
+      );
+      days.forEach((day) => {
+        const dayItem = {
+          label: convertDate(day),
+          href: `/calendar/${day}`,
+        };
+        monthItem.children.push(dayItem);
+      });
+      yearItem.children.push(monthItem);
+    });
+    calendarItem.children.push(yearItem);
+  });
+  navigation.push(calendarItem);
+
+  const episodes = getAllEpisodes();
+  const episodesItem = {
+    label: "Episodes",
+    href: "/episodes",
+    children: [] as NavigationItem[],
+  };
+  episodes.forEach((episode) => {
+    const episodeItem = {
+      label: `Episode ${episode}`,
+      href: `/episodes/${episode}`,
+    };
+    episodesItem.children.push(episodeItem);
+  });
+  navigation.push(episodesItem);
+
+  return navigation;
 }

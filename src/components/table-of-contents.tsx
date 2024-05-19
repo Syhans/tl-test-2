@@ -12,13 +12,13 @@ import { cn } from "@/lib/utils";
 
 export function TableOfContents({
   placeholderOnly = false,
-  editable = false,
 }: {
   placeholderOnly?: boolean;
-  editable?: boolean;
 }) {
   const pathname = usePathname();
   const nodename = pathname.split("/").pop();
+
+  const editable = pathname.startsWith("/calendar/");
 
   return (
     <nav className="order-last hidden w-64 shrink-0 px-4 xl:block">
