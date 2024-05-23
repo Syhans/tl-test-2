@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import { getImageProps } from "@/lib/api";
+import Image from "next/image";
 
 async function NextImageWrapper({
   src,

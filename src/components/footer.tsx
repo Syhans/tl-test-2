@@ -1,8 +1,8 @@
 "use client";
-import { ExternalLink } from "lucide-react";
-import { usePathname } from "next/navigation";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ExternalLink } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const hideThemeToggleOn = ["/episodes(/.*)?", "/calendar/(.*)", "/about"];
 

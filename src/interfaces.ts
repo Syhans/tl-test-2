@@ -1,4 +1,4 @@
-export type Post = {
+export interface Post {
   title: string;
   excerpt: string;
   date: string;
@@ -6,18 +6,18 @@ export type Post = {
   episodes: string[];
   slug: string;
   content: string;
-};
+}
 
-export type Event = {
+export interface Event {
   id: string;
   title?: string;
   start: string;
   end?: string;
   display?: string;
-};
+}
 
-export type NavigationItem = {
+export interface NavigationItem {
   label: string;
   href: string;
   children?: NavigationItem[];
-};
+}

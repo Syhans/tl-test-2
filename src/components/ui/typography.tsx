@@ -1,6 +1,5 @@
-import React, { forwardRef } from "react";
-
 import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
 
 const H1 = forwardRef<
   HTMLHeadingElement,

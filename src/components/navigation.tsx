@@ -1,11 +1,11 @@
 "use client";
+
+import { type NavigationItem } from "@/interfaces";
+import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-
-import { type NavigationItem } from "@/interfaces";
-import { cn } from "@/lib/utils";
 
 import { Button, buttonVariants } from "./ui/button";
 import {
@@ -67,7 +67,7 @@ function NavigationItem({
               {/* Vertical line */}
               <div className="mx-2 w-px bg-gray-200 dark:bg-gray-800" />
               <ul className="flex w-full flex-col gap-1">
-                {item.children.map((child: any, index: number) => (
+                {item.children.map((child: NavigationItem, index: number) => (
                   <NavigationItem
                     key={index}
                     item={child}

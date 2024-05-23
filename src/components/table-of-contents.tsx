@@ -1,12 +1,10 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
-import { CircleChevronUp } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-
 import { GITHUB_REPO_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { CircleChevronUp, ExternalLink } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 // actual toc functionality unimplmented
 
@@ -33,7 +31,7 @@ export function TableOfContents({
             >
               Question? Give me feedback <ExternalLink className="h-3" />
             </a>
-            {editable && (
+            {editable && nodename && (
               <a
                 className="flex w-fit items-center transition-opacity hover:opacity-75"
                 href={`${GITHUB_REPO_URL}/edit/main/_posts/${nodename}.md`}

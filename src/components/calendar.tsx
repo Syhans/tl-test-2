@@ -1,15 +1,14 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { H1 } from "@/components/ui/typography";
+import { Event } from "@/interfaces";
+import { convertDateMonth } from "@/lib/date";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import FullCalendar from "@fullcalendar/react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import { H1 } from "@/components/ui/typography";
-import { Event } from "@/interfaces";
-import { convertDateMonth } from "@/lib/date";
 
 const validRange = {
   start: "2014-10-01",

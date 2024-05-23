@@ -1,6 +1,3 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-
 import { NextImageWrapper as Image } from "@/components/image";
 import {
   H1,
@@ -12,10 +9,12 @@ import {
   P,
   Quote,
 } from "@/components/ui/typography";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
-type Props = {
+interface Props {
   content: string;
-};
+}
 
 export function PostBody({ content }: Props) {
   return (
@@ -23,9 +22,9 @@ export function PostBody({ content }: Props) {
       remarkPlugins={[remarkGfm]}
       className=""
       components={{
-        img: (props) => (
-          <Image src={props.src as string} alt={props.alt as string} />
-        ),
+        img: (props) => {
+          return <Image src={props.src ?? "data:"} alt={props.alt} />;
+        },
         h1: ({ node: _, ...props }) => <H1 {...props} />,
         h2: ({ node: _, ...props }) => <H2 {...props} />,
         h3: ({ node: _, ...props }) => <H3 {...props} />,

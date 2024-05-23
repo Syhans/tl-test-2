@@ -1,8 +1,3 @@
-import "@/styles/globals.css";
-
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -10,6 +5,9 @@ import { SidebarProvider } from "@/contexts/SidebarContext";
 import { getNavigation } from "@/lib/api";
 import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import "@/styles/globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 

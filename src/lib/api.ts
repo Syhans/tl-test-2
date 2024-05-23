@@ -1,10 +1,9 @@
-import { readdirSync, readFileSync } from "fs";
+import { Event, NavigationItem, Post } from "@/interfaces";
+import { readFileSync, readdirSync } from "fs";
 import { readFile } from "fs/promises";
 import matter from "gray-matter";
 import { join } from "path";
 import { getPlaiceholder } from "plaiceholder";
-
-import { Event, NavigationItem, Post } from "@/interfaces";
 
 import { convertDate, getMonth, getYear, monthNameToNumber } from "./date";
 
@@ -47,12 +46,13 @@ export function getAllPosts(): Post[] {
   return posts;
 }
 
-export function getEpisodesToDateMap(): { [key: string]: string[] } {
+export function getEpisodesToDateMap(): Record<string, string[]> {
   const slugs = getPostSlugs();
   const posts = slugs.map((slug) => getPostBySlug(slug));
-  const episodesToDateMap = {} as { [key: string]: string[] };
+  const episodesToDateMap = {} as Record<string, string[]>;
   posts.forEach((post) => {
     post.episodes.forEach((episode) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive
       if (!episodesToDateMap[episode]) {
         episodesToDateMap[episode] = [];
       }
@@ -97,14 +97,14 @@ export function getAllEvents(): Event[] {
 export function getAllEpisodes(): string[] {
   const slugs = getPostSlugs();
   const posts = slugs.map((slug) => getPostBySlug(slug));
-  const episodes = posts.reduce((acc, post) => {
+  const episodes = posts.reduce<string[]>((acc, post) => {
     post.episodes.forEach((episode) => {
       if (!acc.includes(episode)) {
         acc.push(episode);
       }
     });
     return acc;
-  }, [] as string[]);
+  }, []);
 
   return episodes;
 }

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Navigation } from "@/components/navigation";
 import { Sidebar } from "@/components/sidebar";
 import { TableOfContents } from "@/components/table-of-contents";

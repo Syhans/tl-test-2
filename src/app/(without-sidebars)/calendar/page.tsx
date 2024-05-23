@@ -1,9 +1,8 @@
-import { Suspense } from "react";
-
 import { Calendar } from "@/components/calendar";
 import { getAllEvents } from "@/lib/api";
+import { Suspense } from "react";
 
-export default async function Page() {
+export default function Page() {
   const events = getAllEvents();
 
   return (

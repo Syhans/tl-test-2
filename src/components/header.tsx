@@ -1,23 +1,22 @@
-import Link from "next/link";
-
 import { NextImageWrapper as Image } from "@/components/image";
 import { EpisodePagination, PostPagination } from "@/components/pagination";
 import { H1, List, Quote } from "@/components/ui/typography";
 import { convertDate } from "@/lib/date";
+import Link from "next/link";
 
-type PostProps = {
+interface PostProps {
   slug: string;
   title: string;
   coverImage: string;
   episodes: string[];
-};
+}
 
-type EpisodeProps = {
+interface EpisodeProps {
   episode: string;
   title: string;
   coverImage: string;
   dates: string[];
-};
+}
 
 export function PostHeader({ slug, title, coverImage, episodes }: PostProps) {
   const parsedTitle = convertDate(title);
@@ -73,7 +72,9 @@ export function EpisodeHeader({
                 <Link
                   className="text-gray-600 underline-offset-4 transition-opacity hover:opacity-75 dark:text-gray-400"
                   href={`/calendar/${date}`}
-                >{`${convertDate(date)}`}</Link>
+                >
+                  {convertDate(date)}
+                </Link>
               </li>
             );
           })}

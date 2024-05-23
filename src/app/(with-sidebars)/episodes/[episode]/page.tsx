@@ -1,18 +1,17 @@
+import { EpisodeHeader } from "@/components/header";
+import { getAllEpisodes, getEpisodesToDateMap } from "@/lib/api";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { EpisodeHeader } from "@/components/header";
-import { getAllEpisodes, getEpisodesToDateMap } from "@/lib/api";
-
 import episodeCoverImages from "./episodeCoverImages.json";
 
-type Params = {
+interface Params {
   params: {
     episode: string;
   };
-};
+}
 
-export default async function Post({ params }: Params) {
+export default function Post({ params }: Params) {
   if (!params.episode) {
     return notFound();
   }
@@ -45,7 +44,7 @@ export function generateMetadata({ params }: Params): Metadata {
   return { title };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const episodes = getAllEpisodes();
   return episodes.map((episode) => ({
     episode,

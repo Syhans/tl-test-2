@@ -1,8 +1,8 @@
 "use client";
-import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 import { useSidebar, useSidebarToggle } from "@/contexts/SidebarContext";
 import { cn } from "@/lib/utils";
+import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";

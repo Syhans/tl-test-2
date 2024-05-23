@@ -1,9 +1,8 @@
-import { ArrowLeft, ArrowRight, CalendarFold } from "lucide-react";
-import Link from "next/link";
-
 import { buttonVariants } from "@/components/ui/button";
 import { getAllPosts, getEpisodesToDateMap } from "@/lib/api";
 import { cn, getPrevAndNext } from "@/lib/utils";
+import { ArrowLeft, ArrowRight, CalendarFold } from "lucide-react";
+import Link from "next/link";
 
 export function PostPagination({
   slug,
@@ -20,13 +19,13 @@ export function PostPagination({
     <div className={cn("flex w-full justify-between", className)}>
       <PreviousButton
         label={prev ?? "First Date"}
-        href={`/calendar/${prev}`}
+        href={prev ? `/calendar/${prev}` : "#"}
         disabled={!prev}
       />
       <ToCalendarButton date={slug} />
       <NextButton
         label={next ?? "Last Date"}
-        href={`/calendar/${next}`}
+        href={next ? `/calendar/${next}` : "#"}
         disabled={!next}
       />
     </div>
@@ -47,13 +46,13 @@ export function EpisodePagination({
     <div className={cn("flex w-full justify-between", className)}>
       <PreviousButton
         label={prev ? `Episode ${prev}` : "First Episode"}
-        href={`/episodes/${prev}`}
+        href={prev ? `/episodes/${prev}` : "#"}
         disabled={!prev}
       />
       <ToCalendarButton date={episodeToDateMap[episode][0]} />
       <NextButton
         label={next ? `Episode ${next}` : "Last Episode"}
-        href={`/episodes/${next}`}
+        href={next ? `/episodes/${next}` : "#"}
         disabled={!next}
       />
     </div>
