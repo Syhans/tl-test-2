@@ -1,8 +1,15 @@
 import { format, parseISO } from "date-fns";
 import { enUS } from "date-fns/locale";
 
-export function convertDate(date: string) {
+export function convertDate(date: string, allowReturnAsIs = false) {
   const dateObject = parseISO(date);
+  if (allowReturnAsIs) {
+    try {
+      return format(dateObject, "MMMM do, yyyy", { locale: enUS });
+    } catch {
+      return date;
+    }
+  }
   return format(dateObject, "MMMM do, yyyy", { locale: enUS });
 }
 

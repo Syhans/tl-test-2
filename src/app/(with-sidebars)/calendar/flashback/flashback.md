@@ -1,0 +1,46 @@
+---
+title: "2014-10-02"
+date: "2014-10-02"
+coverImage: "/assets/images/617uCKsTCM.webp"
+episodes: ["1"]
+---
+
+Shirobako's main plot - not counting the very first scenes where the girls are still in high school - most likely begins on the 2nd of October 2014. (Funnily enough, Shirobako started airing IRL one week later.) There are a few bits of information that confirm this:
+
+### 1. The date
+
+> Episode 1: The calendar on Aoi's desk shows October, including the 8th being a Wednesday.
+
+> Episode 1: Aoi's desk phone is shown, which displays the date and the day of the week: the date is the 8th of October and the weekday is Wednesday.
+
+> Episode 1: The date is confirmed again later during the same episode, when Honda looks at his watch. It displays Wednesday and the 8th of an unspecified month.
+
+The 8th of October being a Wednesday leaves, within a generous time frame, the years 1997, 2003, 2008, 2014, 2025 and 2031.
+
+### 2. Exodus air dates
+
+This is important because the main plot of Shirobako begins on the day where Exodus's first episode airs. The first half of the show also ends one day before Exodus's thirteenth and final episode airs.
+
+It is confirmed on two separate occasions that Exodus airs on Thrusday nights:
+
+> Episode 9: <QUOTE>
+
+> Episode 12: <QUOTE>
+
+To confirm the point from above: in any of the aforementioned years, the 25th of December is a Thursday.
+
+### 3. The year
+
+I think I remember a calendar displaying 2015 in one of the episodes in the second half of the show. Alternatively:
+
+> Episode 12: <QUOTE>
+
+Now, my knowledge about the Japanese education system does not go beyond what I have picked up from watching various anime, as well as skimming the Wikipedia article. Basically "children who have their 6th birthday on or before April 1 enter the first grade of elementary school of that year" (Wikipedia), which means Aoi started going to school in either 1999 or 2000. This then means Aoi, Ema and Shizuka, who graduated together, did so in either early 2011 or early 2012. Immediately after the graduation scene, there is 2.5-year time skip which leaves us with either late 2013 or 2014.
+
+![2.5 years later](/assets/images/E01_0425.jpg)
+
+> "2.5 years later"
+
+This checks out beautifully. Aoi, Ema and Shizuka, graduated in 2012, Mii in 2013 and Rii in 2014. By October 2014, Aoi and Ema are working as Musashino Animation, Shizuka is a voice-actress-in-training while working part-time, Mii is doing 3D work for a game development company and Rii is going to university.
+
+This is where Shirobako's main plot begins.

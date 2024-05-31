@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { join } from "path";
 import { getPlaiceholder } from "plaiceholder";
 
+import { SPECIAL_POSTS } from "./constants";
 import { convertDate, getMonth, getYear, monthNameToNumber } from "./date";
 
 const postsDirectory = join(process.cwd(), "_posts");
@@ -39,6 +40,7 @@ export function getPostBySlug(slug: string) {
 
 export function getAllPosts(): Post[] {
   const slugs = getPostSlugs();
+
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
@@ -56,7 +58,7 @@ export function getEpisodesToDateMap(): Record<string, string[]> {
       if (!episodesToDateMap[episode]) {
         episodesToDateMap[episode] = [];
       }
-      episodesToDateMap[episode].push(post.date);
+      episodesToDateMap[episode].push(post.title);
     });
   });
   return episodesToDateMap;
@@ -114,6 +116,7 @@ export function getNavigation(): NavigationItem[] {
   navigation.push({ label: "About", href: "/about" });
 
   const posts = getAllPosts()
+    .filter((post) => !SPECIAL_POSTS.includes(post.title.toLowerCase()))
     .map((post) => post.title)
     // sort asc
     .sort((a, b) => (a > b ? 1 : -1));
@@ -123,6 +126,10 @@ export function getNavigation(): NavigationItem[] {
     href: "/calendar",
     children: [] as NavigationItem[],
   };
+  calendarItem.children.push({
+    label: "Flashback",
+    href: "/calendar/flashback",
+  });
   const years = posts
     .map((post) => getYear(post))
     .filter((year, index, self) => self.indexOf(year) === index);

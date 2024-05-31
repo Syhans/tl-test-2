@@ -1,5 +1,5 @@
 import { getImageProps } from "@/lib/api";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 
 async function NextImageWrapper({
   src,
@@ -10,15 +10,13 @@ async function NextImageWrapper({
   alt?: string;
   priority?: boolean;
 }) {
-  const { width, height, blurDataURL } = await getImageProps(src);
+  const { width, height } = await getImageProps(src);
   return (
-    <Image
+    <ExportedImage
       src={src}
       alt={alt ?? ""}
       width={width}
       height={height}
-      placeholder="blur"
-      blurDataURL={blurDataURL}
       priority={priority}
     />
   );

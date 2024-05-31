@@ -1,6 +1,5 @@
 export interface Post {
   title: string;
-  excerpt: string;
   date: string;
   coverImage: string;
   episodes: string[];

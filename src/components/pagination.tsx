@@ -14,6 +14,10 @@ export function PostPagination({
   const posts = getAllPosts()
     .map((post) => post.slug)
     .sort();
+  if (posts.indexOf("flashback") > 0) {
+    posts.splice(posts.indexOf("flashback"), 1);
+    posts.unshift("flashback");
+  }
   const { prev, next } = getPrevAndNext(posts, slug);
   return (
     <div className={cn("flex w-full justify-between", className)}>
@@ -91,7 +95,7 @@ function PreviousButton({
       )}
     >
       <ArrowLeft className="h-[1.2rem] w-[1.2rem]" />
-      <span className="ml-2 text-xs">{label}</span>
+      <span className="ml-2 text-xs capitalize">{label}</span>
     </Link>
   );
 }
@@ -114,7 +118,7 @@ function NextButton({
         disabled && "pointer-events-none opacity-50",
       )}
     >
-      <span className="mr-2 text-xs">{label}</span>
+      <span className="mr-2 text-xs capitalize">{label}</span>
       <ArrowRight className="h-[1.2rem] w-[1.2rem]" />
     </Link>
   );

@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "rimraf .next && next",
-    "build": "rimraf out && next build",
+    "build": "rimraf out && next build && next-image-export-optimizer",
     "start": "npx serve@latest out",
     "lint": "next lint",
     "lint:fix": "next lint -- --fix",
@@ -27,6 +27,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.368.0",
     "next": "^14.2.3",
+    "next-image-export-optimizer": "^1.13.0",
     "next-themes": "^0.3.0",
     "plaiceholder": "^3.0.0",
     "react": "^18.3.1",

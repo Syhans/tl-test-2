@@ -50,7 +50,7 @@ function NavigationItem({
               className={cn(
                 "w-full justify-between font-normal",
                 isActive &&
-                  "bg-gray-100 font-medium text-teal-500 dark:bg-gray-800",
+                  "bg-gray-200 font-medium text-teal-500 dark:bg-gray-800",
               )}
             >
               {item.label}
