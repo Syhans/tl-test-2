@@ -34,7 +34,7 @@ export function TableOfContents({
             {editable && nodename && (
               <a
                 className="flex w-fit items-center transition-opacity hover:opacity-75"
-                href={`${GITHUB_REPO_URL}/edit/main/_posts/${nodename}.md`}
+                href={`${GITHUB_REPO_URL}/edit/main/_posts/${nodename}.mdx`}
                 rel="noopener noreferrer"
                 target="_blank"
               >

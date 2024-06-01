@@ -9,33 +9,29 @@ import {
   P,
   Quote,
 } from "@/components/ui/typography";
-import ReactMarkdown from "react-markdown";
+import { components } from "@/mdx-components";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
-interface Props {
-  content: string;
-}
-
-export function PostBody({ content }: Props) {
+export function PostBody({ content }: { content: string }) {
   return (
-    <ReactMarkdown
-      remarkPlugins={[remarkGfm]}
-      className=""
+    <MDXRemote
+      source={content}
+      options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
       components={{
         img: (props) => {
           return <Image src={props.src ?? "data:"} alt={props.alt} />;
         },
-        h1: ({ node: _, ...props }) => <H1 {...props} />,
-        h2: ({ node: _, ...props }) => <H2 {...props} />,
-        h3: ({ node: _, ...props }) => <H3 {...props} />,
-        h4: ({ node: _, ...props }) => <H4 {...props} />,
-        code: ({ node: _, ...props }) => <InlineCode {...props} />,
-        ul: ({ node: _, ...props }) => <List {...props} />,
-        p: ({ node: _, ...props }) => <P {...props} />,
-        blockquote: ({ node: _, ...props }) => <Quote {...props} />,
+        h1: ({ ...props }) => <H1 {...props} />,
+        h2: ({ ...props }) => <H2 {...props} />,
+        h3: ({ ...props }) => <H3 {...props} />,
+        h4: ({ ...props }) => <H4 {...props} />,
+        code: ({ ...props }) => <InlineCode {...props} />,
+        ul: ({ ...props }) => <List {...props} />,
+        p: ({ ...props }) => <P {...props} />,
+        blockquote: ({ ...props }) => <Quote {...props} />,
+        ...components,
       }}
-    >
-      {content}
-    </ReactMarkdown>
+    />
   );
 }

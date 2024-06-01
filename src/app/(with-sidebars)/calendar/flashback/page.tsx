@@ -7,7 +7,7 @@ export default function Page() {
   const fullPath = join(
     process.cwd(),
     "src/app/(with-sidebars)/calendar/flashback",
-    "flashback.md",
+    "flashback.mdx",
   );
   const fileContents = readFileSync(fullPath, "utf8");
   const { content } = matter(fileContents);

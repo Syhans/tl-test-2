@@ -25,11 +25,11 @@ export async function getImageProps(src: string) {
 }
 
 export function getPostSlugs() {
-  return readdirSync(postsDirectory).map((path) => path.replace(/\.md$/, ""));
+  return readdirSync(postsDirectory).map((path) => path.replace(/\.mdx$/, ""));
 }
 
 export function getPostBySlug(slug: string) {
-  const fullPath = join(postsDirectory, `${slug}.md`);
+  const fullPath = join(postsDirectory, `${slug}.mdx`);
   const fileContents = readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
