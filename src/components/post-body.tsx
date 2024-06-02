@@ -20,7 +20,9 @@ export function PostBody({ content }: { content: string }) {
       options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
       components={{
         img: (props) => {
-          return <Image src={props.src ?? "data:"} alt={props.alt} />;
+          return (
+            <Image src={props.src ?? "data:"} alt={props.alt} showCaption />
+          );
         },
         h1: ({ ...props }) => <H1 {...props} />,
         h2: ({ ...props }) => <H2 {...props} />,

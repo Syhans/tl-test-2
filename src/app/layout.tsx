@@ -1,7 +1,9 @@
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { SpoilerWarningDialog } from "@/components/spoiler-warning-dialog";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarProvider } from "@/contexts/SidebarContext";
+import { SpoilerProvider } from "@/contexts/SpoilerContext";
 import { getNavigation } from "@/lib/api";
 import { PAGE_TITLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -40,11 +42,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider>
-            <Navbar navigation={navigation} />
-            <main className="min-h-[calc(100svh-64px)]">{children}</main>
-            <Footer />
-          </SidebarProvider>
+          <SpoilerProvider>
+            <SpoilerWarningDialog />
+            <SidebarProvider>
+              <Navbar navigation={navigation} />
+              <main className="min-h-[calc(100svh-64px)]">{children}</main>
+              <Footer />
+            </SidebarProvider>
+          </SpoilerProvider>
         </ThemeProvider>
       </body>
     </html>
