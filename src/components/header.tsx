@@ -1,7 +1,6 @@
 import { NextImageWrapper as Image } from "@/components/image";
 import { EpisodePagination, PostPagination } from "@/components/pagination";
 import { H1, List, Quote } from "@/components/ui/typography";
-import { SPECIAL_POSTS } from "@/lib/constants";
 import { convertDate } from "@/lib/date";
 import Link from "next/link";
 
@@ -20,9 +19,7 @@ interface EpisodeProps {
 }
 
 export function PostHeader({ slug, title, coverImage, episodes }: PostProps) {
-  const parsedTitle = SPECIAL_POSTS.includes(title.toLowerCase())
-    ? title
-    : convertDate(title);
+  const parsedTitle = convertDate(title);
   return (
     <>
       <H1>{parsedTitle}</H1>

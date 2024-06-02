@@ -11,6 +11,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useSpoiler, useSpoilerConfirm } from "@/contexts/SpoilerContext";
+import { ExternalLink, StepForward } from "lucide-react";
 
 export function SpoilerWarningDialog() {
   const isSpoilerOk = useSpoiler();
@@ -30,9 +31,31 @@ export function SpoilerWarningDialog() {
       <AlertDialogOverlay className="bg-black" />
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Spoiler Warning</AlertDialogTitle>
+          <AlertDialogTitle>Spoiler Warning!</AlertDialogTitle>
           <AlertDialogDescription>
-            This post contains spoilers. Are you sure you want to continue?
+            It seems like you are visiting this website for the first time (or
+            have cleared your browser cache). This website contains spoilers for
+            the entirety of the anime <b>Shirobako</b> (
+            <a
+              className="inline-flex w-fit items-center transition-opacity hover:opacity-75"
+              href="https://myanimelist.net/anime/25835/Shirobako/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              MAL
+              <ExternalLink className="h-4" />
+            </a>
+            /{" "}
+            <a
+              className="inline-flex w-fit items-center transition-opacity hover:opacity-75"
+              href="https://anilist.co/anime/20812/SHIROBAKO/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Anilist
+              <ExternalLink className="h-4" />
+            </a>
+            ). Click the continue button if you are okay with this.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -41,7 +64,8 @@ export function SpoilerWarningDialog() {
               confirmSpoilerIsOk();
             }}
           >
-            Yes
+            Continue
+            <StepForward className="h-5" />
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

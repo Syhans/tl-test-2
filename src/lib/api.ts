@@ -5,7 +5,6 @@ import matter from "gray-matter";
 import { join } from "path";
 import { getPlaiceholder } from "plaiceholder";
 
-import { SPECIAL_POSTS } from "./constants";
 import { convertDate, getMonth, getYear, monthNameToNumber } from "./date";
 
 const postsDirectory = join(process.cwd(), "_posts");
@@ -116,7 +115,6 @@ export function getNavigation(): NavigationItem[] {
   navigation.push({ label: "About", href: "/about" });
 
   const posts = getAllPosts()
-    .filter((post) => !SPECIAL_POSTS.includes(post.title.toLowerCase()))
     .map((post) => post.title)
     // sort asc
     .sort((a, b) => (a > b ? 1 : -1));

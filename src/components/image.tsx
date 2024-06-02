@@ -28,7 +28,7 @@ async function NextImageWrapper({
   return (
     <>
       {Img}
-      <span className="inline-flex w-full justify-center text-center text-sm italic">
+      <span className="inline-flex w-full justify-center p-1 text-center text-sm italic">
         {alt}
       </span>
     </>
