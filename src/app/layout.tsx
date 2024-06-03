@@ -46,7 +46,7 @@ export default function RootLayout({
             <SpoilerWarningDialog />
             <SidebarProvider>
               <Navbar navigation={navigation} />
-              <main className="min-h-[calc(100svh-64px)]">{children}</main>
+              <main className="min-h-[calc(100svh-4rem)]">{children}</main>
               <Footer />
             </SidebarProvider>
           </SpoilerProvider>

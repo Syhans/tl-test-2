@@ -1,6 +1,6 @@
 import { EpisodeHeader } from "@/components/header";
 import { getAllEpisodes, getEpisodesToDateMap } from "@/lib/api";
-import { Metadata } from "next";
+import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import episodeCoverImages from "./episodeCoverImages.json";
@@ -17,11 +17,15 @@ export default function Post({ params }: Params) {
   }
 
   const dates = getEpisodesToDateMap()[params.episode];
+  if (!dates) {
+    throw new Error(`No dates found for episode ${params.episode}`);
+  }
+
   const coverImage =
     episodeCoverImages[params.episode as keyof typeof episodeCoverImages];
 
   return (
-    <article className="flex min-h-[100svh-64px] w-full min-w-0 justify-center break-words pb-8">
+    <article className="flex min-h-[calc(100svh-4rem)] w-full min-w-0 justify-center break-words pb-8">
       <div className="w-full min-w-0 max-w-6xl space-y-6 px-6 pt-4 md:px-12">
         <EpisodeHeader
           episode={params.episode}

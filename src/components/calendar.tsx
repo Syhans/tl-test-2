@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { H1 } from "@/components/ui/typography";
-import { Event } from "@/interfaces";
+import { type Event } from "@/interfaces";
 import { convertDateMonth } from "@/lib/date";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import FullCalendar from "@fullcalendar/react";

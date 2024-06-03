@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { NavigationItem } from "@/interfaces";
+import { type NavigationItem } from "@/interfaces";
 import { PAGE_TITLE } from "@/lib/constants";
 import { CalendarRange, Menu } from "lucide-react";
 import Link from "next/link";

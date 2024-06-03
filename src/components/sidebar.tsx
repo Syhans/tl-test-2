@@ -14,13 +14,13 @@ export function Sidebar({ children }: { children?: React.ReactNode }) {
   return (
     <aside
       className={cn(
-        "hidden flex-col transition-all ease-in-out md:sticky md:top-16 md:flex md:w-64 md:shrink-0 md:self-start",
+        "hidden flex-col transition-all ease-in-out md:sticky md:top-16 md:flex md:h-[calc(100svh-4rem)] md:w-64 md:shrink-0 md:self-start",
         !isOpen && "md:w-20",
       )}
     >
       <div
         className={cn(
-          "scrollbar grow overflow-y-auto overflow-x-hidden p-4 md:h-[calc(100svh-64px)]",
+          "scrollbar grow overflow-y-auto overflow-x-hidden p-4 ",
           !isOpen && "invisible",
         )}
       >

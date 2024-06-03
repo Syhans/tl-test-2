@@ -1,14 +1,14 @@
 {
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "rimraf .next && next",
     "build": "rimraf out && next build && next-image-export-optimizer",
     "start": "npx serve@latest out",
     "lint": "next lint",
-    "lint:fix": "next lint -- --fix",
+    "lint:fix": "next lint --fix .",
     "prettier": "prettier --write .",
-    "prettier:check": "prettier --check .",
-    "convert-images": "ts-node ./convert-images.ts"
+    "prettier:check": "prettier --check ."
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.11",
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/eslint": "^8.56.10",
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
@@ -50,16 +51,12 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-simple-import-sort": "^12.1.0",
-    "eslint-plugin-unused-imports": "^3.2.0",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "rimraf": "^5.0.7",
     "sharp": "^0.33.4",
     "tailwindcss": "^3.4.3",
-    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
 }

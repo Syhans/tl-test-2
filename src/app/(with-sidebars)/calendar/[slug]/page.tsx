@@ -1,7 +1,7 @@
 import { PostHeader } from "@/components/header";
 import { PostBody } from "@/components/post-body";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
-import { Metadata } from "next";
+import { type Metadata } from "next";
 
 interface Params {
   params: {
@@ -17,7 +17,7 @@ export default function Post({ params }: Params) {
   // }
 
   return (
-    <article className="flex min-h-[100svh-64px] w-full min-w-0 justify-center break-words pb-8">
+    <article className="flex min-h-[calc(100svh-4rem)] w-full min-w-0 justify-center break-words pb-8">
       <div className="w-full min-w-0 max-w-6xl space-y-6 px-6 pt-4 md:px-12">
         <PostHeader
           slug={params.slug}

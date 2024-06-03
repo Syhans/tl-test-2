@@ -1,4 +1,4 @@
-import { Event, NavigationItem, Post } from "@/interfaces";
+import { type Event, type NavigationItem, type Post } from "@/interfaces";
 import { readFileSync, readdirSync } from "fs";
 import { readFile } from "fs/promises";
 import matter from "gray-matter";
@@ -57,7 +57,7 @@ export function getEpisodesToDateMap(): Record<string, string[]> {
       if (!episodesToDateMap[episode]) {
         episodesToDateMap[episode] = [];
       }
-      episodesToDateMap[episode].push(post.title);
+      episodesToDateMap[episode]!.push(post.title);
     });
   });
   return episodesToDateMap;
@@ -77,9 +77,12 @@ export function getAllEvents(): Event[] {
   const episodesToDateMap = getEpisodesToDateMap();
   const episodeEvents = Object.entries(episodesToDateMap).map(
     ([episode, dates]) => {
-      const startDate = new Date(dates[0]);
+      if (dates.length === 0) {
+        throw new Error("No dates found for episode");
+      }
+      const startDate = new Date(dates[0]!);
       const start = startDate.toISOString();
-      const endDate = new Date(dates[dates.length - 1]);
+      const endDate = new Date(dates[dates.length - 1]!);
       endDate.setDate(endDate.getDate() + 1);
       const end = endDate.toISOString();
 
@@ -125,8 +128,8 @@ export function getNavigation(): NavigationItem[] {
     children: [] as NavigationItem[],
   };
   calendarItem.children.push({
-    label: "Flashback",
-    href: "/calendar/flashback",
+    label: "General Timeframe",
+    href: "/calendar/general-timeframe",
   });
   const years = posts
     .map((post) => getYear(post))

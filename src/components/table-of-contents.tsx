@@ -22,7 +22,7 @@ export function TableOfContents({
     <nav className="order-last hidden w-64 shrink-0 px-4 xl:block">
       {!placeholderOnly && (
         <div className="scrollbar sticky top-16 overflow-y-auto pr-4 pt-6 text-xs">
-          <div className="mt-8 flex flex-col items-start gap-2 bg-gray-50 pb-8 dark:bg-gray-950">
+          <div className="mt-8 flex flex-col items-start gap-2 bg-gray-50 dark:bg-gray-950">
             <a
               className="flex w-fit items-center transition-opacity hover:opacity-75"
               href={`${GITHUB_REPO_URL}/issues/new?title=Feedback%20on%20${pathname}`}

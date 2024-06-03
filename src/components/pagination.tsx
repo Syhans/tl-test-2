@@ -14,9 +14,9 @@ export function PostPagination({
   const posts = getAllPosts()
     .map((post) => post.slug)
     .sort();
-  if (posts.indexOf("flashback") > 0) {
-    posts.splice(posts.indexOf("flashback"), 1);
-    posts.unshift("flashback");
+  if (posts.indexOf("general-timeframe") > 0) {
+    posts.splice(posts.indexOf("general-timeframe"), 1);
+    posts.unshift("general-timeframe");
   }
   const { prev, next } = getPrevAndNext(posts, slug);
   return (
@@ -53,7 +53,7 @@ export function EpisodePagination({
         href={prev ? `/episodes/${prev}` : "#"}
         disabled={!prev}
       />
-      <ToCalendarButton date={episodeToDateMap[episode][0]} />
+      <ToCalendarButton date={episodeToDateMap[episode]?.[0]} />
       <NextButton
         label={next ? `Episode ${next}` : "Last Episode"}
         href={next ? `/episodes/${next}` : "#"}
