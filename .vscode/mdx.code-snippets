@@ -1,0 +1,44 @@
+{
+  "Image Carousel Snippet": {
+    "prefix": "ImageCarousel",
+    "body": [
+      "<ImageCarousel",
+      "  srcs={[",
+      "    \"/assets/images/E${1:__}/${3:____-___}.jpg}\",",
+      "    \"/assets/images/E${2:__}/${4:____-___}.jpg}\",",
+      "  ]},",
+      "  alts={['', '']}",
+      "/>",
+    ],
+    "description": "Code snippet for an ImageCarousel component",
+  },
+  "Image Snippet": {
+    "prefix": "Image",
+    "body": ["![${1:DESCRIPTION}](/assets/images/E${2:__}/${3:____-___}.jpg)"],
+    "description": "Code snippet for an Image component",
+  },
+  "Alert Snippet": {
+    "prefix": "Alert",
+    "body": [
+      "<Alert>",
+      "  <${1:IconComponent} />",
+      "  <AlertDescription>",
+      "    ${2:DESCRIPTION}",
+      "  </AlertDescription>",
+      "</Alert>",
+    ],
+    "description": "Code snippet for an Alert component",
+  },
+  "Frontmatter Snippet": {
+    "prefix": "Frontmatter",
+    "body": [
+      "---",
+      "title: \"${1:TITLE}\"",
+      "date: \"${1:DATE}\"",
+      "coverImage: \"/assets/images/E${2:__}/${3:____-___}.jpg\"",
+      "episodes: [\"${4:EPISODE}\"]",
+      "---",
+    ],
+    "description": "Code snippet for a Frontmatter component",
+  },
+}
