@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button, buttonVariants } from "./ui/button";
 import {
@@ -38,8 +38,13 @@ function NavigationItem({
   onNavigate?: () => void;
 }) {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(pathname.startsWith(item.href));
-  const isActive = item.href === pathname && pathname !== "/calendar";
+  const [isOpen, setIsOpen] = useState(pathname.includes(item.href));
+
+  useEffect(() => {
+    setIsOpen((prev) => (!prev ? pathname.includes(item.href) : prev));
+  }, [pathname, item.href]);
+
+  const isActive = item.href === pathname; // && pathname !== "/calendar";
   if (item.children) {
     return (
       <li>

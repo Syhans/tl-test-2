@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Moon, Sun } from "lucide-react";
+import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -42,24 +42,30 @@ export function ThemeToggle({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem
+          className="cursor-pointer"
           onClick={() => {
             setTheme("light");
           }}
         >
+          <Sun className="mr-2 h-4 w-4" />
           Light
         </DropdownMenuItem>
         <DropdownMenuItem
+          className="cursor-pointer"
           onClick={() => {
             setTheme("dark");
           }}
         >
+          <Moon className="mr-2 h-4 w-4" />
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem
+          className="cursor-pointer"
           onClick={() => {
             setTheme("system");
           }}
         >
+          <Monitor className="mr-2 h-4 w-4" />
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
