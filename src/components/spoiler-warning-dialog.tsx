@@ -55,7 +55,15 @@ export function SpoilerWarningDialog() {
               Anilist
               <ExternalLink className="h-4" />
             </a>
-            ). Click the continue button if you are okay with this.
+            ).
+            <br />
+            <br />
+            <b>Seriously, the entire show gets practically re-told here.</b>
+            <br />
+            If you are not familiar with Shirobako, please check it out first.
+            <br />
+            <br />
+            Click the continue button if you are okay with spoilers.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

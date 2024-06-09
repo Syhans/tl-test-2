@@ -4,9 +4,9 @@
     "body": [
       "<ImageCarousel",
       "  srcs={[",
-      "    \"/assets/images/E${1:__}/${3:____-___}.jpg}\",",
-      "    \"/assets/images/E${2:__}/${4:____-___}.jpg}\",",
-      "  ]},",
+      "    \"/assets/images/E${1:__}/${3:____-___}.jpg\",",
+      "    \"/assets/images/E${2:__}/${4:____-___}.jpg\",",
+      "  ]}",
       "  alts={['', '']}",
       "/>",
     ],
