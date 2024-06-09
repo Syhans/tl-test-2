@@ -1,4 +1,5 @@
 import { PostHeader } from "@/components/header";
+import { PostPagination } from "@/components/pagination";
 import { PostBody } from "@/components/post-body";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import { type Metadata } from "next";
@@ -17,17 +18,23 @@ export default function Post({ params }: Params) {
   // }
 
   return (
-    <article className="flex min-h-[calc(100svh-4rem)] w-full min-w-0 justify-center break-words pb-8">
-      <div className="w-full min-w-0 max-w-6xl space-y-6 px-6 pt-4 md:px-12">
-        <PostHeader
-          slug={params.slug}
-          title={post.title}
-          coverImage={post.coverImage}
-          episodes={post.episodes}
-        />
-        <PostBody content={post.content} />
-      </div>
-    </article>
+    <div className="flex flex-col">
+      <article className="flex min-h-[calc(100svh-4rem)] w-full min-w-0 justify-center break-words pb-8">
+        <div className="w-full min-w-0 max-w-6xl space-y-6 px-6 pt-4 md:px-12">
+          <PostHeader
+            slug={params.slug}
+            title={post.title}
+            coverImage={post.coverImage}
+            episodes={post.episodes}
+          />
+          <PostBody content={post.content} />
+        </div>
+      </article>
+      <PostPagination
+        slug={params.slug}
+        className="mt-auto max-w-6xl px-6 py-4"
+      />
+    </div>
   );
 }
 

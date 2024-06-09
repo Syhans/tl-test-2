@@ -58,7 +58,7 @@ export function SpoilerWarningDialog() {
             ).
             <br />
             <br />
-            <b>Seriously, the entire show gets practically re-told here.</b>
+            <b>Seriously, the entire show gets practically retold here.</b>
             <br />
             If you are not familiar with Shirobako, please check it out first.
             <br />
