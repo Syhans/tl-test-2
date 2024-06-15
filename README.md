@@ -7,7 +7,8 @@
 - [x] Remove "flashback" special rules
 - [ ] Add a switch for 12/24h.
 - [x] Switch to MDX to make an image carousel.
-- [ ] Match linter config with t3-app's (currently massively overkill)
+- [x] Match linter config with t3-app's (currently massively overkill)
+- [ ] Fix image height for horizontal mobile devices.
 
 ## FAQ
 
