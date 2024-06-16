@@ -158,7 +158,7 @@ export function getNavigation(): NavigationItem[] {
       );
       days.forEach((day) => {
         const dayItem = {
-          label: convertDate(day),
+          label: convertDate(day, false, true),
           href: `/calendar/${day}`,
         };
         monthItem.children.push(dayItem);

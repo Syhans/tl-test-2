@@ -10,7 +10,7 @@ const H1 = forwardRef<
       {...props}
       ref={ref}
       className={cn(
-        "scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl",
+        "scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-4xl",
         props.className,
       )}
     >

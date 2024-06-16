@@ -1,16 +1,28 @@
 import { format, parseISO } from "date-fns";
 import { enUS } from "date-fns/locale";
 
-export function convertDate(date: string, allowReturnAsIs = false) {
+export function convertDate(
+  date: string,
+  allowReturnAsIs = false,
+  omitWeekday = false,
+) {
   const dateObject = parseISO(date);
   if (allowReturnAsIs) {
     try {
-      return format(dateObject, "MMMM do, yyyy", { locale: enUS });
+      if (omitWeekday) {
+        return format(dateObject, "MMMM d, yyyy", { locale: enUS });
+      } else {
+        return format(dateObject, "EEEE, MMMM d, yyyy", { locale: enUS });
+      }
     } catch {
       return date;
     }
   }
-  return format(dateObject, "MMMM do, yyyy", { locale: enUS });
+  if (omitWeekday) {
+    return format(dateObject, "MMMM d, yyyy", { locale: enUS });
+  } else {
+    return format(dateObject, "EEEE, MMMM d, yyyy", { locale: enUS });
+  }
 }
 
 export function convertDateMonth(date: string) {

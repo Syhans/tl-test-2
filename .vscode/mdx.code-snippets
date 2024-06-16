@@ -44,4 +44,9 @@
     ],
     "description": "Code snippet for a Frontmatter component",
   },
+  "Link Snippet": {
+    "prefix": "Link",
+    "body": ["[${1:TEXT}](/${2:LINK})"],
+    "description": "Code snippet for a Link component",
+  },
 }

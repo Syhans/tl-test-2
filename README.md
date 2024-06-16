@@ -9,6 +9,10 @@
 - [x] Switch to MDX to make an image carousel.
 - [x] Match linter config with t3-app's (currently massively overkill)
 - [ ] Fix image height for horizontal mobile devices.
+- [ ] Add sunrise/-down to calendar pages
+- [ ] Fix date formats
+- [ ] Add links to dates where applicable
+- [ ] Fix 2014-11-23 thumbnail
 
 ## FAQ
 
